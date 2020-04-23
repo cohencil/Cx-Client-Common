@@ -11,15 +11,15 @@ import java.util.Properties;
 
 public abstract class CommonClientTest {
     private static final String PROPERTIES_FILE = "config.properties";
-    Logger log = LoggerFactory.getLogger(ConnectionTests.class.getName());
-    static Properties props;
+    protected Logger log = LoggerFactory.getLogger(ConnectionTests.class.getName());
+    protected static Properties props;
 
     @BeforeClass
     public static void initTest() throws IOException {
         props = TestingUtils.getProps(PROPERTIES_FILE, ProjectScanTests.class);
     }
 
-    void failOnException(Exception e) {
+    protected void failOnException(Exception e) {
         log.error("Unexpected exception.", e);
         Assert.fail(e.getMessage());
     }

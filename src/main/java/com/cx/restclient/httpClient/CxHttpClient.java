@@ -420,6 +420,12 @@ public class CxHttpClient {
         return request(post, contentType, entity, responseType, expectStatus, failedMsg, false, true);
     }
 
+    //PUT REQUEST with absolute path
+    public <T> T putRequestWithAbsoluteUrl(String absolutePath, String contentType, HttpEntity entity, Class<T> responseType, int expectStatus, String failedMsg) throws IOException, CxClientException {
+        HttpPut put = new HttpPut(absolutePath);
+        return request(put, contentType, entity, responseType, expectStatus, failedMsg, false, true);
+    }
+
     //PUT REQUEST
     public <T> T putRequest(String relPath, String contentType, HttpEntity entity, Class<T> responseType, int expectStatus, String failedMsg) throws IOException, CxClientException {
         HttpPut put = new HttpPut(rootUri + relPath);

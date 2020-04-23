@@ -229,6 +229,15 @@ public class CxShragaClient {
         }
     }
 
+    public static void testAstConnection(CxScanConfig config, Logger log) throws CxClientException {
+        ASTClient client = new ASTClient(config, log);
+        try {
+            client.testConnection();
+        } catch (IOException e) {
+            throw new CxClientException(e);
+        }
+    }
+
     private CxArmConfig getCxARMConfig() throws IOException, CxClientException {
         httpClient.setTeamPathHeader(this.teamPath);
         return httpClient.getRequest(CX_ARM_URL, CONTENT_TYPE_APPLICATION_JSON_V1, CxArmConfig.class, 200, "CxARM URL", false);
